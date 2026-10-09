@@ -1,0 +1,165 @@
+{
+  "text": "2025",
+  "fontFamily": "Comic",
+  "letterSpacing": 0,
+  "lineHeight": 1,
+  "align": "center",
+  "isBold": true,
+  "isItalic": false,
+  "isUnderline": false,
+  "rotation": 0,
+  "curve": 0,
+  "zigzag": 0,
+  "animation": {
+    "id": "none",
+    "speed": 1
+  },
+  "fill": {
+    "type": "alternating",
+    "stops": [
+      {
+        "color": "#14d1f1",
+        "pos": 50
+      },
+      {
+        "color": "#0fb1f2",
+        "pos": 50
+      }
+    ],
+    "angle": 180,
+    "opacity": 1,
+    "scope": "letter",
+    "altMode": "solid",
+    "altGradients": [
+      {
+        "c1": "#ff0000",
+        "c2": "#ffea00",
+        "angle": 180
+      },
+      {
+        "c1": "#00f0ff",
+        "c2": "#0000ff",
+        "angle": 180
+      }
+    ],
+    "colors": [
+      "#ffb600",
+      "#32e0c3",
+      "#7450cc",
+      "#ff5780"
+    ],
+    "altImages": [],
+    "altPatternBgType": "none",
+    "altPatternBgColor": "#ffffff",
+    "altPatternBgStops": [
+      {
+        "color": "#ffffff",
+        "pos": 0
+      },
+      {
+        "color": "#000000",
+        "pos": 100
+      }
+    ],
+    "altPatternBgAngle": 90,
+    "altPatternRepeat": "repeat",
+    "color": "#ffffff",
+    "altScope": "letter",
+    "patternBgType": "none",
+    "patternBgColor": "#ffffff",
+    "patternBgStops": [
+      {
+        "color": "#ffffff",
+        "pos": 0
+      },
+      {
+        "color": "#000000",
+        "pos": 100
+      }
+    ],
+    "patternBgAngle": 90
+  },
+  "layers": [
+    {
+      "id": 1777120373572,
+      "layerType": "3d",
+      "opacity": 1,
+      "enabled": true,
+      "size": 20,
+      "width": 0,
+      "angle": 71,
+      "angleGrad": 90,
+      "type": "alternating",
+      "color": "#1e3a8a",
+      "scope": "text",
+      "stops": [
+        {
+          "color": "#1e3a8a",
+          "pos": 0
+        },
+        {
+          "color": "#ffffff",
+          "pos": 100
+        }
+      ],
+      "altMode": "solid",
+      "altScope": "letter",
+      "colors": [
+        "#b7831b",
+        "#18927a",
+        "#463067",
+        "#b23b57"
+      ],
+      "altGradients": [
+        {
+          "c1": "#1e3a8a",
+          "c2": "#ffffff",
+          "angle": 90
+        }
+      ],
+      "patternBase64": null,
+      "patternRepeat": "repeat",
+      "altImages": [],
+      "altPatternBgType": "none",
+      "altPatternBgColor": "#ffffff",
+      "altPatternBgStops": [
+        {
+          "color": "#ffffff",
+          "pos": 0
+        },
+        {
+          "color": "#000000",
+          "pos": 100
+        }
+      ],
+      "altPatternBgAngle": 90
+    }
+  ],
+  "bg": {
+    "type": "solid",
+    "opacity": 1,
+    "color": "#ffffff",
+    "stops": [
+      {
+        "color": "#FF0000",
+        "pos": 0
+      },
+      {
+        "color": "#FF0000",
+        "pos": 50
+      },
+      {
+        "color": "#0000FF",
+        "pos": 50
+      },
+      {
+        "color": "#0000FF",
+        "pos": 100
+      }
+    ],
+    "angle": 90,
+    "base64": null,
+    "patternRepeat": "repeat",
+    "scope": "text"
+  }
+}

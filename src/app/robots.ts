@@ -1,0 +1,1 @@
+export default function robots(){return {rules:{userAgent:'*',allow:'/',disallow:['/api/','/owner','/admin','/user/','/payment/','/search/']},sitemap:(process.env.APP_URL||'http://localhost:3000')+'/sitemap.xml'};}

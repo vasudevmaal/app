@@ -1,0 +1,21 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+const base=process.env.TEST_URL;
+test('account, permissions, favorites, projects, premium gates and export',{skip:!base},async()=>{
+ const styles=await (await fetch(base+'/api/styles')).json();assert.ok(styles.length>0);
+ const denied=await fetch(base+'/api/admin/overview');assert.equal(denied.status,401);
+ const email='qa-'+Date.now()+'@example.test';const signup=await fetch(base+'/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:'QA Test Account',email,password:'test-password-2026'})});assert.equal(signup.status,200,await signup.text());const cookie=signup.headers.get('set-cookie').split(';')[0];
+ const call=(route,data,method='POST')=>fetch(base+'/api/'+route,{method,headers:{cookie,'Content-Type':'application/json'},body:data?JSON.stringify(data):undefined});
+ assert.equal((await call('admin/overview',null,'GET')).status,403);
+ const free=styles.find(s=>!s.is_premium),pro=styles.find(s=>s.is_premium);
+ assert.equal((await call('favorites',{style_id:free.id})).status,200);assert.equal((await (await call('favorites',null,'GET')).json()).length,1);
+ assert.equal((await call('favorites',{style_id:free.id},'DELETE')).status,200);
+ const state={...free.content_json,text:'TEST',wave:0};
+ const project=await (await call('projects',{title:'QA project',style_id:free.id,content_json:state})).json();assert.ok(project.id);assert.equal((await call('projects',{id:project.id},'DELETE')).status,200);
+ assert.equal((await call('export',{style_id:free.id,content_json:state,quality:7680,ratio:'16:9',format:'png'})).status,400);
+ assert.equal((await call('export',{style_id:pro.id,content_json:{...pro.content_json,wave:0},quality:1280,ratio:'16:9',format:'png'})).status,400);
+ const exported=await call('export',{style_id:free.id,content_json:state,quality:640,ratio:'16:9',format:'png'});assert.equal(exported.status,200);assert.equal(exported.headers.get('content-type'),'image/png');assert.ok((await exported.arrayBuffer()).byteLength>1000);
+ const account=await (await call('account',null,'GET')).json();assert.equal(account.used,1);
+ const crossOrigin=await fetch(base+'/api/projects',{method:'POST',headers:{cookie,Origin:'https://other.example','Content-Type':'application/json'},body:'{}'});assert.equal(crossOrigin.status,403);
+ await call('auth/logout',{});assert.equal((await call('account',null,'GET')).status,401);
+});

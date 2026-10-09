@@ -1,0 +1,297 @@
+.style-card h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  .header-main {
+    min-width: 0;
+  }
+  .header-search {
+    flex: 0 1 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    gap: 8px;
+  }
+  .header-search input {
+    flex: 1 1 0%;
+    width: 0;
+    min-width: 0;
+    font-size: 16px;
+  }
+  .header-search input::placeholder {
+    font-size: 14px;
+  }
+  .header-search > svg,
+  .header-search > button {
+    flex-shrink: 0;
+  }
+}
+.style-card .style-info,
+.style-card .style-info > a {
+  min-width: 0;
+}
+.style-caption > div {
+  min-width: 0;
+  flex: 1;
+}
+.style-caption h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+html[data-theme="dark"] .billing-tabs {
+  background: #171b20;
+  border-color: var(--line);
+}
+html[data-theme="dark"] .billing-tabs button {
+  color: var(--muted);
+}
+html[data-theme="dark"] .billing-tabs button.active {
+  background: #313841;
+  color: var(--ink);
+  box-shadow: none;
+}
+html[data-theme="dark"] .billing-tabs span {
+  background: #203b31;
+  color: #9dd8b9;
+}
+.preset-swatches {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+.preset-swatches > button {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  height: 34px;
+  padding: 0;
+  overflow: hidden;
+}
+.preset-swatches > button.preset-transparent {
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #d8dde2 25%, transparent 25%),
+    linear-gradient(-45deg, #d8dde2 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #d8dde2 75%),
+    linear-gradient(-45deg, transparent 75%, #d8dde2 75%);
+  background-size: 12px 12px;
+  background-position:
+    0 0,
+    0 6px,
+    6px -6px,
+    -6px 0;
+}
+.preset-swatches img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.preset-manager-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.preset-manager-item {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 18px;
+  min-width: 0;
+}
+.preset-preview {
+  height: 86px;
+  border-radius: 5px;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.preset-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.preset-manager-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.font-library-manager {
+  display: grid;
+  gap: 24px;
+}
+.font-library-upload {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(260px, 1fr);
+  gap: 16px;
+  align-items: end;
+}
+.font-library-item {
+  position: relative;
+  display: grid;
+  gap: 5px;
+}
+.font-library-item > small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.font-library-item > .icon-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.font-preview {
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--subtle);
+  font-size: 30px;
+  overflow: hidden;
+}
+@media (max-width: 700px) {
+  .font-library-upload {
+    grid-template-columns: 1fr;
+  }
+}
+.gradient-stops-editor .color-stop {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.gradient-stops-editor input[type="range"] {
+  min-width: 30px;
+  flex: 1;
+}
+.gradient-stops-editor output {
+  min-width: 32px;
+  font-size: 10px;
+}
+.gradient-stops-editor input[type="color"] {
+  flex: 0 0 32px;
+  width: 32px;
+}
+.alternating-color {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.alternating-color .icon-button {
+  width: 22px;
+}
+.alternating-images {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.alternating-images > div {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.alternating-images img {
+  width: 100%;
+  height: 56px;
+  object-fit: contain;
+}
+.alternating-images button {
+  background: var(--subtle);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
+}
+
+html[data-theme="dark"] .button.dark {
+  background: #2a3037;
+  border-color: #414a54;
+  color: #f1f4f7;
+  box-shadow: 0 1px 0 #ffffff08 inset;
+}
+html[data-theme="dark"] .button.dark:hover:not(:disabled) {
+  background: #353e48;
+  border-color: #596571;
+  color: #ffffff;
+}
+html[data-theme="dark"] .catalog-dropdown-trigger,
+html[data-theme="dark"] .catalog-filter select {
+  background: #171b20;
+  border-color: #3a434d;
+  color: #e7ebef;
+}
+html[data-theme="dark"] .catalog-dropdown-trigger:hover,
+html[data-theme="dark"] .catalog-filter select:hover {
+  background: #20262d;
+  border-color: #596571;
+}
+html[data-theme="dark"] .sort-control .catalog-dropdown-trigger {
+  color: #e7ebef;
+}
+html[data-theme="dark"] .catalog-dropdown-menu {
+  background: #171b20;
+  border-color: #3a434d;
+  color: #e7ebef;
+  box-shadow: 0 12px 30px #0008;
+}
+html[data-theme="dark"] .catalog-dropdown-option[data-active="true"],
+html[data-theme="dark"] .catalog-dropdown-option:hover {
+  background: #252d36;
+}
+html[data-theme="dark"] .catalog-dropdown-option[aria-selected="true"] {
+  color: #f28a6d;
+}
+html[data-theme="dark"] .tag-row button {
+  background: #171b20;
+  border-color: #343d47;
+  color: #b8c0c9;
+}
+html[data-theme="dark"] .tag-row button:hover {
+  background: #20262d;
+  border-color: #596571;
+  color: #f1f4f7;
+}
+html[data-theme="dark"] .tag-row button.active {
+  background: #e77a5e;
+  border-color: #e77a5e;
+  color: #171b20;
+}
+
+.contact-page {
+  display: block;
+  max-width: 760px;
+  padding-top: 58px;
+}
+.contact-page > div:first-child {
+  max-width: 640px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+.contact-page > div:first-child .contact-meta {
+  justify-content: center;
+  text-align: left;
+}
+.contact-page > form {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.contact-page > form > .button {
+  margin-top: 4px;
+}
+@media (max-width: 700px) {
+  .contact-page {
+    padding-top: 36px;
+  }
+  .contact-page > div:first-child {
+    margin-bottom: 30px;
+  }
+}

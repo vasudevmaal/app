@@ -1,0 +1,308 @@
+.workspace {
+  min-width: 0;
+}
+.legacyBackgroundControls {
+  display: none;
+}
+.workspace :global(.editor-tabs) {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.workspace :global(.editor-tabs button) {
+  min-width: 0;
+}
+.workspace :global(.text-transform-grid) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.workspace :global(.range-field) {
+  min-width: 0;
+}
+.workspace :global(.color-field) {
+  flex-wrap: wrap;
+}
+.iconSettings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 12px;
+}
+.iconSettings :global(.color-field) {
+  grid-column: 1 / -1;
+}
+.iconPicker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 20px;
+}
+.iconChoice,
+.iconChoiceActive {
+  min-height: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  background: var(--subtle);
+}
+.iconChoice:hover,
+.iconChoiceActive {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+.iconChoice > span,
+.iconChoiceActive > span {
+  font-size: 22px;
+  line-height: 1;
+}
+.iconChoice small,
+.iconChoiceActive small {
+  font-size: 10px;
+}
+.workspace :global(.editor-canvas canvas) {
+  cursor: default;
+}
+.message {
+  color: var(--muted);
+  padding: 14px 0;
+  font-size: 12px;
+}
+.fontPickerTrigger {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--subtle);
+  text-align: left;
+}
+.fontDialog {
+  width: min(860px, calc(100vw - 28px));
+  max-width: none;
+  max-height: min(82dvh, 760px);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--subtle);
+  color: var(--ink);
+  overflow: auto;
+}
+.fontDialog::backdrop {
+  background: #11182780;
+}
+.fontDialogHeader,
+.fontDialogActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.fontDialogHeader {
+  margin-bottom: 15px;
+}
+.fontDialogHeader h2 {
+  font-size: 19px;
+}
+.fontDialogHeader p {
+  margin-top: 3px;
+  font-size: 12px;
+}
+.fontDialogActions {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 14px;
+}
+.fontSearch {
+  min-width: 180px;
+  min-height: 36px;
+  flex: 1 1 220px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--muted);
+}
+.fontSearch input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 12px;
+}
+.fontFile {
+  display: none;
+}
+.fontLoading,
+.fontEmpty {
+  padding: 12px 0;
+  font-size: 12px;
+}
+.fontGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+.fontCard {
+  min-width: 0;
+  min-height: 94px;
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+}
+.fontCardActive {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+:global(html[data-theme="dark"]) .fontSearch,
+:global(html[data-theme="dark"]) .fontCard {
+  border-color: #39414a;
+  background: #20262d;
+  color: #eceff3;
+}
+:global(html[data-theme="dark"]) .fontCardActive {
+  border-color: #ed674a;
+  background: #252b33;
+  box-shadow: inset 0 0 0 1px #ed674a;
+}
+:global(html[data-theme="dark"]) .fontSearch input {
+  background: transparent;
+  color: #eceff3;
+}
+:global(html[data-theme="dark"]) .fontSearch input::placeholder {
+  color: #a7adb7;
+  opacity: 1;
+}
+:global(html[data-theme="dark"]) .fontChoice {
+  color: #eceff3;
+}
+:global(html[data-theme="dark"]) .fontChoice:hover,
+:global(html[data-theme="dark"]) .fontFavorite:hover {
+  background: #2b323b;
+}
+:global(html[data-theme="dark"]) .fontChoice small {
+  color: #a7adb7;
+}
+:global(html[data-theme="dark"]) .fontFavorite {
+  color: #a7adb7;
+}
+:global(html[data-theme="dark"]) .fontFavorite[aria-pressed="true"] {
+  color: #f19a7e;
+}
+.fontChoice {
+  width: 100%;
+  min-height: 92px;
+  padding: 12px 34px 12px 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7px;
+  overflow: hidden;
+  text-align: left;
+}
+.fontChoice > span {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  overflow: hidden;
+  font-size: 23px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fontChoice small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.fontFavorite {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  color: var(--muted);
+}
+.fontFavorite[aria-pressed="true"] {
+  color: var(--accent);
+}
+.loginRequiredOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #11182780;
+}
+.loginRequiredPopup {
+  width: min(340px, 100%);
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--subtle);
+  color: var(--ink);
+  text-align: center;
+  box-shadow: 0 18px 50px #0003;
+}
+.loginRequiredIcon {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.loginRequiredPopup h3 {
+  font-size: 17px;
+}
+.loginRequiredPopup p {
+  margin: 7px 0 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+@media (max-width: 640px) {
+  .fontDialog {
+    width: calc(100vw - 20px);
+    max-height: 88dvh;
+    padding: 15px;
+  }
+  .fontGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .fontSearch {
+    flex-basis: 100%;
+  }
+  .fontDialogActions {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .fontDialogActions > .button {
+    width: calc(50% - 6px);
+    min-width: 0;
+    flex: 0 0 calc(50% - 6px);
+  }
+}

@@ -1,0 +1,48 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {loadImage} from '@napi-rs/canvas';
+const base=process.env.TEST_URL;
+const missing = async url => { const response=await fetch(base+url); assert.ok((await response.text()).includes('The style or page you are looking for is not available.')); };
+test('owner content, announcement, regional pricing, background uploads, guest export and deletion',{skip:!base},async()=>{
+  const response=await fetch(base+'/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:'owner@excpix.com',password:'12345678'})});assert.equal(response.status,200,await response.text());
+  const cookie=response.headers.get('set-cookie').split(';')[0];
+  const call=(route,data,method='POST',auth=cookie)=>fetch(base+'/api/'+route,{method,headers:{cookie:auth,'Content-Type':'application/json'},body:data===undefined?undefined:JSON.stringify(data)});
+  const settings=await(await call('admin/settings',undefined,'GET')).json();
+  assert.ok(!settings.categories.some(c=>c.id==='blog'));assert.ok(!settings.categories.some(c=>c.id==='prompt'));assert.ok(settings.categories.some(c=>c.id==='text'));
+  assert.equal((await call('admin/settings',{...settings,home_style_count:40,announcement:'New styles',announcement_url:'/3d-text',announcement_link_text:'Explore'})).status,200);
+  assert.equal((await call('admin/settings',{announcement_url:'javascript:alert(1)'})).status,400);
+  assert.equal((await call('admin/settings',{home_style_count:-1})).status,400);
+  for(const url of ['/','/faq','/text','/subscription'])assert.equal((await fetch(base+url)).status,200,url);
+  assert.equal((await fetch(base+'/blog')).status,404);
+  const home=await(await fetch(base)).text();assert.ok(home.includes('New styles'));assert.ok(home.includes('/3d-text'));
+  const styles=await(await fetch(base+'/api/styles')).json(), template=styles.find(s=>s.kind==='3d-text'&&s.is_free);
+  const {id:unused,...draft}=template;
+  assert.equal((await call('admin/styles',{...draft,kind:'blog',slug:'qa-blog-'+Date.now()})).status,400);
+  const plans=await(await call('admin/plans',undefined,'GET')).json(),pro=plans.find(p=>p.id==='pro');
+  const regional_prices=[{country:'',currency:'USD',price:4.99,yearly_price:49,active:true,gateways:['stripe']},{country:'FR',currency:'EUR',price:6,yearly_price:60,active:true,gateways:['stripe']}];
+  assert.equal((await call('admin/plans',{...pro,regional_prices})).status,200);
+  const usPage=await(await fetch(base+'/subscription',{headers:{'x-vercel-ip-country':'US'}})).text();assert.ok(usPage.includes('4.99'));assert.ok(usPage.includes('USD'));
+  assert.equal((await call('admin/plans',{...pro,regional_prices:[{...regional_prices[1],currency:'USD'}]})).status,400);
+  assert.equal((await call('admin/plans',{...pro,regional_prices:[...regional_prices,regional_prices[0]]})).status,400);
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300"><rect width="500" height="300" fill="#27cba5"/></svg>';
+  for(const kind of ['image','pattern']){
+    const form=new FormData();form.set('kind',kind);form.set('file',new File([svg],'qa-background.svg',{type:'image/svg+xml'}));
+    const uploaded=await fetch(base+'/api/admin/backgrounds',{method:'POST',headers:{cookie},body:form});assert.equal(uploaded.status,200,await uploaded.clone().text());const asset=await uploaded.json();
+    const thumbnail=await fetch(base+asset.preview_url);assert.equal(thumbnail.status,200);const image=await loadImage(Buffer.from(await thumbnail.arrayBuffer()));assert.equal(image.width,250);assert.equal(image.height,150);
+    assert.equal((await fetch(base+asset.original_url)).headers.get('content-disposition').startsWith('attachment'),true);
+    const content_json={...template.content_json,bg:{...template.content_json.bg,type:kind,[kind==='image'?'base64':'patternBase64']:asset.render_url}};
+    const exported=await call('export',{style_id:template.id,content_json,quality:480,ratio:'16:9',format:'png'},'POST','');assert.equal(exported.status,200,await exported.clone().text());
+  }
+  const unsafe=new FormData();unsafe.set('kind','image');unsafe.set('file',new File(['<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script></svg>'],'unsafe.svg',{type:'image/svg+xml'}));assert.equal((await fetch(base+'/api/admin/backgrounds',{method:'POST',headers:{cookie},body:unsafe})).status,400);
+  const email='qa-publish-'+Date.now()+'@example.test';const signup=await call('auth/register',{email,name:'QA publisher',password:'test-password-2026'},'POST','');assert.equal(signup.status,200);const userCookie=signup.headers.get('set-cookie').split(';')[0];
+  const submitted=await call('submissions',{...draft,slug:'qa-community',metadata:{},content_json:template.content_json},'POST',userCookie);assert.equal(submitted.status,200);const submissionId=(await submitted.json()).id;
+  const pending=(await(await call('admin/styles',undefined,'GET')).json()).find(s=>s.id===submissionId);assert.equal(pending.kind,'text');assert.equal(pending.status,'pending');await missing('/text/'+pending.slug);
+  assert.equal((await call('admin/styles',{...pending,status:'approved',is_active:true})).status,200);assert.equal((await fetch(base+'/text/'+pending.slug)).status,200);
+  assert.equal((await call('favorites',{style_id:submissionId},'POST',userCookie)).status,200);
+  assert.equal((await call('projects',{style_id:submissionId,title:'Keep project',content_json:template.content_json},'POST',userCookie)).status,200);
+  assert.equal((await call('export',{style_id:submissionId,content_json:template.content_json,quality:480,ratio:'16:9',format:'png'},'POST',userCookie)).status,200);
+  assert.equal((await call('admin/styles',{id:submissionId},'DELETE',userCookie)).status,403);
+  assert.equal((await call('admin/styles',{id:submissionId},'DELETE')).status,200);await missing('/text/'+pending.slug);
+  const account=await(await call('account',undefined,'GET',userCookie)).json();assert.ok(account.projects.some(p=>p.title==='Keep project'));assert.ok(account.downloads.length);assert.equal(account.favorites.length,0);
+  await call('admin/plans',pro);await call('admin/settings',settings);
+});

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="holoCanvas" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="holoBlur" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="172" id="blurVal"/>
+                        </filter>
+                        <filter id="noiseFilter" x="0" y="0" width="100%" height="100%">
+                            <feTurbulence type="fractalNoise" baseFrequency="1.00" numOctaves="3" stitchTiles="stitch" id="noiseFreq"/>
+                            <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.10 0" id="noiseAlpha"/>
+                        </filter>
+                    </defs>
+                    
+                    <rect width="100%" height="100%" fill="#ffffff" id="bgRect"/>
+                    
+                    <g filter="url(#holoBlur)" id="blobsGroup">
+                        <circle cx="55%" cy="38%" r="526" fill="#00ff99" class="blob" id="c1"/>
+                        <circle cx="66%" cy="59%" r="534" fill="#00ccff" class="blob" id="c2"/>
+                        <circle cx="36%" cy="79%" r="463" fill="#9900ff" class="blob" id="c3"/>
+                        <circle cx="15%" cy="92%" r="510" fill="#00ff99" class="blob" id="c4"/>
+                        <circle cx="19%" cy="87%" r="426" fill="#ccff00" class="blob" id="c5"/>
+                    </g>
+                    
+                    <rect width="100%" height="100%" style="pointer-events:none;" filter="url(#noiseFilter)"/>
+                    
+                    <text x="1890" y="1050" text-anchor="end" font-family="Inter, sans-serif" font-weight="800" font-size="28" fill="rgba(255,255,255,0.4)" style="pointer-events:none; letter-spacing: 2px;">
+                        EXCPIX.COM
+                    </text>
+                </svg>

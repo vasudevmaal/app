@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">2027 Decorative Calendar</title>
+  <desc id="desc">A soft lilac and cream decorative calendar for 2027.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffaf1"/>
+      <stop offset="1" stop-color="#e9e4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="28" fill="url(#paper)"/>
+  <circle cx="1100" cy="92" r="54" fill="#f6c4b8" opacity=".6"/>
+  <circle cx="1040" cy="122" r="22" fill="#bd6c75" opacity=".8"/>
+  <text x="60" y="74" fill="#8b6f89" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="3">A YEAR TO REMEMBER</text>
+  <text x="60" y="162" fill="#3d3652" font-family="Arial,sans-serif" font-size="94" font-weight="800">2027</text>
+  <text x="1135" y="110" text-anchor="end" fill="#bd6c75" font-family="Georgia,serif" font-size="26" font-style="italic">Twelve little chapters</text>
+  <text x="1135" y="145" text-anchor="end" fill="#bd6c75" font-family="Georgia,serif" font-size="26" font-style="italic">waiting to be written.</text>
+  <path d="M60 185H1140" stroke="#d59a9d" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#4d4969" font-family="Arial,sans-serif" font-size="16" font-weight="700">
+    <text x="60" y="232">JANUARY</text><text x="435" y="232">FEBRUARY</text><text x="810" y="232">MARCH</text>
+    <text x="60" y="390">APRIL</text><text x="435" y="390">MAY</text><text x="810" y="390">JUNE</text>
+    <text x="60" y="548">JULY</text><text x="435" y="548">AUGUST</text><text x="810" y="548">SEPTEMBER</text>
+    <text x="60" y="706">OCTOBER</text><text x="435" y="706">NOVEMBER</text><text x="810" y="706">DECEMBER</text>
+  </g>
+  <g fill="#68728d" font-family="monospace" font-size="14">
+    <text x="60" y="258">Su Mo Tu We Th Fr Sa</text><text x="435" y="258">Su Mo Tu We Th Fr Sa</text><text x="810" y="258">Su Mo Tu We Th Fr Sa</text>
+    <text x="60" y="278">             1  2  3  4</text><text x="435" y="278">    1  2  3  4  5  6</text><text x="810" y="278">    1  2  3  4  5  6</text>
+    <text x="60" y="298"> 5  6  7  8  9 10 11</text><text x="435" y="298"> 7  8  9 10 11 12 13</text><text x="810" y="298"> 7  8  9 10 11 12 13</text>
+    <text x="60" y="318">12 13 14 15 16 17 18</text><text x="435" y="318">14 15 16 17 18 19 20</text><text x="810" y="318">14 15 16 17 18 19 20</text>
+    <text x="60" y="338">19 20 21 22 23 24 25</text><text x="435" y="338">21 22 23 24 25 26 27</text><text x="810" y="338">21 22 23 24 25 26 27</text>
+    <text x="60" y="358">26 27 28 29 30 31</text><text x="435" y="358">28</text><text x="810" y="358">28 29 30 31</text>
+    <text x="60" y="416">Su Mo Tu We Th Fr Sa</text><text x="435" y="416">Su Mo Tu We Th Fr Sa</text><text x="810" y="416">Su Mo Tu We Th Fr Sa</text>
+    <text x="60" y="436">          1  2  3  4  5</text><text x="435" y="436">                   1</text><text x="810" y="436">       1  2  3  4  5</text>
+    <text x="60" y="456"> 6  7  8  9 10 11 12</text><text x="435" y="456"> 2  3  4  5  6  7  8</text><text x="810" y="456"> 6  7  8  9 10 11 12</text>
+    <text x="60" y="476">13 14 15 16 17 18 19</text><text x="435" y="476"> 9 10 11 12 13 14 15</text><text x="810" y="476">13 14 15 16 17 18 19</text>
+    <text x="60" y="496">20 21 22 23 24 25 26</text><text x="435" y="496">16 17 18 19 20 21 22</text><text x="810" y="496">20 21 22 23 24 25 26</text>
+    <text x="60" y="516">27 28 29 30</text><text x="435" y="516">23 24 25 26 27 28 29</text><text x="810" y="516">27 28 29 30</text>
+    <text x="60" y="574">Su Mo Tu We Th Fr Sa</text><text x="435" y="574">Su Mo Tu We Th Fr Sa</text><text x="810" y="574">Su Mo Tu We Th Fr Sa</text>
+    <text x="60" y="594">       1  2  3  4  5  6</text><text x="435" y="594">                1  2</text><text x="810" y="594">       1  2  3  4  5  6</text>
+    <text x="60" y="614"> 7  8  9 10 11 12 13</text><text x="435" y="614"> 3  4  5  6  7  8  9</text><text x="810" y="614"> 7  8  9 10 11 12 13</text>
+    <text x="60" y="634">14 15 16 17 18 19 20</text><text x="435" y="634">10 11 12 13 14 15 16</text><text x="810" y="634">14 15 16 17 18 19 20</text>
+    <text x="60" y="654">21 22 23 24 25 26 27</text><text x="435" y="654">17 18 19 20 21 22 23</text><text x="810" y="654">21 22 23 24 25 26 27</text>
+    <text x="60" y="674">28 29 30 31</text><text x="435" y="674">24 25 26 27 28 29 30</text><text x="810" y="674">28 29 30</text>
+    <text x="60" y="732">Su Mo Tu We Th Fr Sa</text><text x="435" y="732">Su Mo Tu We Th Fr Sa</text><text x="810" y="732">Su Mo Tu We Th Fr Sa</text>
+    <text x="60" y="752">             1  2  3</text><text x="435" y="752">    1  2  3  4  5  6</text><text x="810" y="752">          1  2  3  4</text>
+    <text x="60" y="772"> 4  5  6  7  8  9 10</text><text x="435" y="772"> 7  8  9 10 11 12 13</text><text x="810" y="772"> 5  6  7  8  9 10 11</text>
+    <text x="60" y="792">11 12 13 14 15 16 17</text><text x="435" y="792">14 15 16 17 18 19 20</text><text x="810" y="792">12 13 14 15 16 17 18</text>
+    <text x="60" y="812">18 19 20 21 22 23 24</text><text x="435" y="812">21 22 23 24 25 26 27</text><text x="810" y="812">19 20 21 22 23 24 25</text>
+    <text x="60" y="832">25 26 27 28 29 30 31</text><text x="435" y="832">28 29 30</text><text x="810" y="832">26 27 28 29 30 31</text>
+  </g>
+</svg>

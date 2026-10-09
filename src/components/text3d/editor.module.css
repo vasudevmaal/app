@@ -1,0 +1,260 @@
+.workspace {
+  height: 680px;
+}
+.workspace > :global(.preview-pane),
+.workspace > :global(.controls-pane) {
+  height: 100%;
+  min-height: 0;
+}
+.workspace :global(.editor-controls) {
+  min-height: 0;
+}
+.characterCount {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.3;
+}
+.textFieldLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.workspace :global(.preview-toolbar) {
+  flex-shrink: 0;
+}
+.canvas {
+  position: absolute;
+  inset: 0;
+}
+.canvas canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+.canvas canvas:active {
+  cursor: grabbing;
+}
+.processing {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffffed;
+  color: #373b40;
+  padding: 7px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  pointer-events: none;
+}
+.empty,
+.failure {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  color: #545b61;
+  text-align: center;
+}
+.failure {
+  background: var(--subtle);
+  flex-direction: column;
+  gap: 16px;
+}
+.bottom {
+  flex-shrink: 0;
+  gap: 5px;
+}
+.bottom :global(.icon-button) {
+  width: 24px;
+  height: 22px;
+}
+.views {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.views button {
+  padding: 2px 7px;
+  font-size: 10px;
+}
+.views button + button {
+  border-left: 1px solid var(--line);
+}
+.views button:hover {
+  background: var(--subtle);
+}
+.divider {
+  border-top: 1px solid var(--line);
+  margin: 24px 0;
+}
+.upload {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px dashed var(--line);
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.upload small {
+  font-size: 10px;
+  color: var(--muted);
+}
+.file {
+  display: none;
+}
+.texture {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.texture img {
+  width: 100px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.presets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.preset {
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: left;
+}
+.preset img,
+.presetLoading {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  object-fit: contain;
+  background: #eef0f2;
+}
+.presetLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+}
+.preset > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 10px;
+  font-size: 12px;
+}
+.preset[aria-pressed="true"],
+.preset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  margin: 20px 0;
+}
+.formatNote {
+  font-size: 12px;
+  line-height: 1.7;
+  min-height: 60px;
+}
+.quality {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.downloadLink {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+.error,
+.success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  background: var(--subtle);
+  flex-shrink: 0;
+}
+.error {
+  color: #c44436;
+  justify-content: space-between;
+}
+.success {
+  color: var(--green);
+}
+.thumbnailHost {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 320px;
+  height: 192px;
+  visibility: hidden;
+  pointer-events: none;
+}
+@media (min-width: 1800px) {
+  .workspace {
+    height: 760px;
+  }
+}
+@media (min-width: 3000px) {
+  .workspace {
+    height: 950px;
+  }
+}
+@media (max-width: 1200px) {
+  .workspace {
+    height: 650px;
+  }
+}
+@media (max-width: 960px) {
+  .workspace {
+    height: 620px;
+  }
+}
+@media (max-width: 700px) {
+  .workspace {
+    height: auto;
+  }
+  .workspace > :global(.preview-pane) {
+    height: 250px;
+    min-height: 250px;
+    max-height: 250px;
+  }
+  .workspace > :global(.controls-pane) {
+    height: auto;
+    min-height: 565px;
+  }
+  .bottom :global(.icon-button) {
+    width: 22px;
+    height: 20px;
+  }
+  .views button {
+    padding: 1px 5px;
+    font-size: 9px;
+  }
+}
